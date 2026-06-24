@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Sora, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -27,6 +28,13 @@ export default function RootLayout({
       lang="id"
       className={`${sora.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
+      <head>
+        {/* Load MediaPipe Vision tasks library */}
+        <Script
+          src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/vision_bundle.js"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
